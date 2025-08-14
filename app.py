@@ -2,7 +2,7 @@ import gradio as gr
 import joblib
 import numpy as np
 import pandas as pd
-
+import os
 # Load model
 model = joblib.load("model.pkl")
 
@@ -31,8 +31,11 @@ app = gr.Interface(
 # if __name__ == "__main__":
 #     app.launch(server_name="0.0.0.0", server_port=8080)
 
-if __name__ == "__main__":
-    app.launch(server_name="127.0.0.1", server_port=8080)
+# if __name__ == "__main__":
+#     app.launch(server_name="127.0.0.1", server_port=8080)
 
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8080))  # Render gives PORT
+    app.launch(server_name="0.0.0.0", server_port=port)
 
 
